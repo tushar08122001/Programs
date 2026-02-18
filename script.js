@@ -5,7 +5,11 @@ const taskList = document.getElementById("taskList");
 
 // Add event listener to button
 addBtn.addEventListener("click", function() {
-    
+    if (taskText === "") 
+        {
+    alert("Please enter a task!");
+    return;}
+
     // Get input value
     const taskText = taskInput.value;
 
