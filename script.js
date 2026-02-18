@@ -82,7 +82,7 @@ function renderTasks() {
             renderTasks();
         });
 
-        // Edit button
+        // Edit
         const editBtn = document.createElement("button");
         editBtn.textContent = "✏";
 
@@ -95,7 +95,7 @@ function renderTasks() {
             }
         });
 
-        // Delete button
+        // Delete
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "❌";
 
@@ -105,7 +105,7 @@ function renderTasks() {
             renderTasks();
         });
 
-        /* -------- Drag Events -------- */
+        /* -------- Drag & Drop -------- */
 
         li.addEventListener("dragstart", () => {
             draggedItemId = task.id;
@@ -132,24 +132,37 @@ function renderTasks() {
         li.appendChild(deleteBtn);
         taskList.appendChild(li);
     });
+
+    updateStats();
+    toggleEmptyState();
 }
 
 /* -------------------- FILTERS -------------------- */
 
 allBtn.addEventListener("click", () => {
     currentFilter = "all";
+    setActiveFilter(allBtn);
     renderTasks();
 });
 
 completedBtn.addEventListener("click", () => {
     currentFilter = "completed";
+    setActiveFilter(completedBtn);
     renderTasks();
 });
 
 pendingBtn.addEventListener("click", () => {
     currentFilter = "pending";
+    setActiveFilter(pendingBtn);
     renderTasks();
 });
+
+function setActiveFilter(activeButton) {
+    document.querySelectorAll(".filters button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+    activeButton.classList.add("active");
+}
 
 /* -------------------- DARK MODE -------------------- */
 
@@ -162,6 +175,26 @@ darkModeToggle.addEventListener("click", () => {
         localStorage.setItem("theme", "light");
     }
 });
+
+/* -------------------- STATS + EMPTY STATE -------------------- */
+
+function updateStats() {
+    const total = tasks.length;
+    const completed = tasks.filter(t => t.completed).length;
+
+    document.getElementById("totalCount").textContent = total;
+    document.getElementById("completedCount").textContent = completed;
+}
+
+function toggleEmptyState() {
+    const emptyState = document.getElementById("emptyState");
+
+    if (tasks.length === 0) {
+        emptyState.style.display = "block";
+    } else {
+        emptyState.style.display = "none";
+    }
+}
 
 /* -------------------- SAVE -------------------- */
 
