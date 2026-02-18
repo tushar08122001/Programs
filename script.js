@@ -5,13 +5,15 @@ const taskList = document.getElementById("taskList");
 
 // Add event listener to button
 addBtn.addEventListener("click", function() {
-    if (taskInput.value === "") 
-        {
-    alert("Please enter a task!");
-    return;}
-
+    
     // Get input value
     const taskText = taskInput.value;
+
+    // Prevent empty tasks
+    if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+    }
 
     // Create new list item
     const li = document.createElement("li");
