@@ -1,200 +1,161 @@
-/* ---------------- RESET ---------------- */
-
+/* ===== Reset ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ===== Body Background (Option 1) ===== */
 body {
-    font-family: Inter, sans-serif;
-    background: #f5f6fa;
-    color: #1e1e2f;
-    height: 100vh;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
+        url("https://images.unsplash.com/photo-1492724441997-5dc865305da7");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-/* ---------------- LAYOUT ---------------- */
-
+/* ===== Main App Card ===== */
 .app-container {
-    display: flex;
-    height: 100vh;
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px;
+    color: #ffffff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* ---------------- SIDEBAR ---------------- */
-
-.sidebar {
-    width: 280px;
-    background: white;
-    padding: 40px 30px;
-    border-right: 1px solid #e4e6eb;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.logo {
-    font-size: 22px;
-    font-weight: 700;
-}
-
-.tagline {
-    font-size: 13px;
-    color: #777;
-    margin-bottom: 40px;
-}
-
-.toggle-theme {
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    background: #1e1e2f;
-    color: white;
-    cursor: pointer;
-    margin-bottom: 30px;
-}
-
-.stats p {
-    font-size: 14px;
+/* ===== Header ===== */
+h1 {
+    font-size: 28px;
     margin-bottom: 10px;
+    font-weight: 600;
 }
 
-/* ---------------- MAIN CONTENT ---------------- */
-
-.main-content {
-    flex: 1;
-    padding: 50px;
-    overflow-y: auto;
+.subtitle {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 25px;
+    line-height: 1.5;
 }
 
-.input-wrapper {
+/* ===== Input Section ===== */
+.input-group {
     display: flex;
     gap: 10px;
-    margin-bottom: 25px;
-}
-
-input {
-    flex: 1;
-    padding: 14px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-}
-
-input:focus {
-    outline: none;
-    border-color: #6366f1;
-}
-
-#addBtn {
-    padding: 14px 20px;
-    border-radius: 10px;
-    border: none;
-    background: #6366f1;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-#addBtn:hover {
-    opacity: 0.85;
-}
-
-/* ---------------- FILTERS ---------------- */
-
-.filters {
     margin-bottom: 20px;
 }
 
-.filters button {
-    padding: 8px 14px;
-    margin-right: 10px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    background: white;
-    cursor: pointer;
-    font-size: 13px;
-}
-
-.filters button.active {
-    background: #6366f1;
-    color: white;
+#taskInput {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
     border: none;
+    outline: none;
+    font-size: 14px;
 }
 
-/* ---------------- TASK LIST ---------------- */
+#addBtn {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
 
+#addBtn:hover {
+    background: #2563eb;
+}
+
+/* ===== Task List ===== */
 ul {
     list-style: none;
+    margin-top: 10px;
 }
 
 li {
-    background: white;
-    padding: 16px;
-    margin-bottom: 12px;
-    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: 0.2s ease;
-    border: 1px solid #eee;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: 0.3s ease;
 }
 
 li:hover {
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 li span {
+    cursor: pointer;
     flex: 1;
-    font-size: 14px;
 }
 
+/* Completed task style */
 .completed {
     text-decoration: line-through;
-    color: #888;
+    opacity: 0.6;
 }
 
+/* Delete Button */
 li button {
-    background: none;
+    background: transparent;
     border: none;
     cursor: pointer;
-    margin-left: 10px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
-/* ---------------- EMPTY STATE ---------------- */
-
-.empty-state {
-    margin-top: 40px;
-    text-align: center;
-    color: #999;
-    font-size: 14px;
-    display: none;
+/* ===== Filter Buttons ===== */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
 }
 
-/* ---------------- DARK MODE ---------------- */
-
-body.dark {
-    background: #121212;
-    color: #f0f0f0;
-}
-
-body.dark .sidebar {
-    background: #1e1e1e;
-    border-right: 1px solid #333;
-}
-
-body.dark .main-content {
-    background: #121212;
-}
-
-body.dark li {
-    background: #1e1e1e;
-    border: 1px solid #333;
-}
-
-body.dark input {
-    background: #1e1e1e;
-    border: 1px solid #333;
+.filters button {
+    flex: 1;
+    margin: 0 5px;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
     color: white;
+    transition: 0.3s;
+}
+
+.filters button:hover {
+    background: #3b82f6;
+}
+
+/* ===== Stats Section ===== */
+.stats {
+    margin-top: 20px;
+    font-size: 13px;
+    opacity: 0.8;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ===== Empty State ===== */
+#emptyState {
+    margin-top: 20px;
+    text-align: center;
+    opacity: 0.6;
+    font-size: 14px;
 }
