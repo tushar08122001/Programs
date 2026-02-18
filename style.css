@@ -1,55 +1,177 @@
+/* ---------- GLOBAL ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
 }
 
-.container {
-    margin-top: 50px;
+/* ---------- MAIN APP ---------- */
+
+.app {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    color: white;
 }
 
-input {
-    padding: 10px;
-    width: 250px;
+/* ---------- HEADER ---------- */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-button {
-    padding: 10px;
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
     cursor: pointer;
 }
 
-li {
+/* ---------- INPUT SECTION ---------- */
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.add-btn {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: none;
+    background: #ffffff;
+    color: #667eea;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.add-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ---------- FILTERS ---------- */
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    flex: 1;
+    margin: 0 5px;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    transition: 0.2s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: white;
+    color: #667eea;
+}
+
+/* ---------- TASK LIST ---------- */
+
+ul {
     list-style: none;
-    margin: 10px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 li {
+    background: rgba(255,255,255,0.2);
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
-    margin: 10px auto;
-    width: 300px;
+    align-items: center;
+    cursor: grab;
+    transition: 0.2s;
+}
+
+li:hover {
+    transform: translateY(-3px);
+}
+
+li span {
+    flex: 1;
+    cursor: pointer;
 }
 
 .completed {
     text-decoration: line-through;
-    color: gray;
+    opacity: 0.6;
 }
 
-.dark {
-    background-color: #1e1e1e;
+/* ---------- BUTTONS INSIDE TASK ---------- */
+
+li button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+li button:hover {
+    transform: scale(1.2);
+}
+
+/* ---------- DARK MODE ---------- */
+
+body.dark {
+    background: linear-gradient(135deg, #1e1e2f, #121212);
+}
+
+body.dark .app {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+body.dark .add-btn {
+    background: #333;
     color: white;
 }
 
-.dark li {
+body.dark .filter-btn.active {
     background: #333;
-}
-
-li {
-    background: white;
-    padding: 10px;
-    margin: 10px auto;
-    width: 300px;
-    display: flex;
-    justify-content: space-between;
-    cursor: grab;
+    color: white;
 }
