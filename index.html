@@ -9,47 +9,38 @@
 
 <div class="app-container">
 
-    <aside class="sidebar">
-        <h2 class="logo">TaskFlow</h2>
-        <p class="subtitle">
-            Take control of your day with a clean and distraction-free task manager designed 
-            to help you focus on what truly matters. Add tasks in seconds, track your progress, 
-            and stay organized without the clutter of complicated productivity tools.
-        </p>
+    <h1 class="logo">TaskFlow</h1>
 
-        <button id="darkModeToggle" class="toggle-theme">Toggle Theme</button>
+    <p class="subtitle">
+        Take control of your day with a clean and distraction-free task manager 
+        designed to help you focus on what truly matters. Add tasks in seconds, 
+        track your progress, and stay organized without the clutter.
+    </p>
 
-        <div class="stats">
-            <p>Total Tasks: <span id="totalCount">0</span></p>
-            <p>Completed: <span id="completedCount">0</span></p>
-        </div>
-    </aside>
+    <div class="input-group">
+        <input type="text" id="taskInput" placeholder="What needs to be done?">
+        <button id="addBtn">Add Task</button>
+    </div>
 
-    <main class="main-content">
+    <div class="filters">
+        <button onclick="filterTasks('all')">All</button>
+        <button onclick="filterTasks('completed')">Completed</button>
+        <button onclick="filterTasks('pending')">Pending</button>
+    </div>
 
-        <div class="input-wrapper">
-            <input type="text" id="taskInput" placeholder="What needs to be done?">
-            <button id="addBtn">Add Task</button>
-        </div>
+    <ul id="taskList"></ul>
 
-        <div class="filters">
-            <button id="allBtn" class="active">All</button>
-            <button id="completedBtn">Completed</button>
-            <button id="pendingBtn">Pending</button>
-        </div>
+    <p id="emptyState">🎉 No tasks yet. Add something productive!</p>
 
-        <ul id="taskList"></ul>
-
-        <div id="emptyState" class="empty-state">
-            🎉 No tasks yet. Add something productive!
-        </div>
-
-    </main>
+    <div class="stats">
+        <span>Total: <strong id="totalCount">0</strong></span>
+        <span>Completed: <strong id="completedCount">0</strong></span>
+    </div>
 
 </div>
 
-<script src="script.js"></script>
 </body>
+
 
 
 </html>

@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* ===== Body Background (Option 1) ===== */
+/* ===== Background ===== */
 body {
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
@@ -13,6 +13,7 @@ body {
     background:
         linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
         url("https://images.unsplash.com/photo-1492724441997-5dc865305da7");
+
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -20,56 +21,62 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
 }
 
-/* ===== Main App Card ===== */
+/* ===== Glass Card ===== */
 .app-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
+    padding: 40px;
+    border-radius: 24px;
+
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    padding: 30px;
-    color: #ffffff;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
-/* ===== Header ===== */
-h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
+/* ===== Logo ===== */
+.logo {
+    text-align: center;
+    font-size: 32px;
     font-weight: 600;
+    margin-bottom: 15px;
 }
 
+/* ===== Subtitle ===== */
 .subtitle {
+    text-align: center;
     font-size: 14px;
     opacity: 0.8;
-    margin-bottom: 25px;
-    line-height: 1.5;
+    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
 /* ===== Input Section ===== */
 .input-group {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 20px;
 }
 
 #taskInput {
     flex: 1;
-    padding: 12px;
-    border-radius: 10px;
+    padding: 14px;
+    border-radius: 12px;
     border: none;
     outline: none;
     font-size: 14px;
 }
 
 #addBtn {
-    padding: 12px 18px;
-    border-radius: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
     border: none;
-    background: #3b82f6;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
     color: white;
     font-weight: 500;
     cursor: pointer;
@@ -77,7 +84,30 @@ h1 {
 }
 
 #addBtn:hover {
-    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* ===== Filters ===== */
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filters button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filters button:hover {
+    background: rgba(59, 130, 246, 0.8);
 }
 
 /* ===== Task List ===== */
@@ -90,10 +120,12 @@ li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+
     background: rgba(255, 255, 255, 0.08);
-    padding: 12px 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
     transition: 0.3s ease;
 }
 
@@ -106,56 +138,34 @@ li span {
     flex: 1;
 }
 
-/* Completed task style */
+/* Completed task */
 .completed {
     text-decoration: line-through;
     opacity: 0.6;
 }
 
-/* Delete Button */
+/* Delete button */
 li button {
     background: transparent;
     border: none;
-    cursor: pointer;
+    color: #ff6b6b;
     font-size: 16px;
-}
-
-/* ===== Filter Buttons ===== */
-.filters {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-
-.filters button {
-    flex: 1;
-    margin: 0 5px;
-    padding: 8px;
-    border-radius: 8px;
-    border: none;
     cursor: pointer;
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    transition: 0.3s;
-}
-
-.filters button:hover {
-    background: #3b82f6;
-}
-
-/* ===== Stats Section ===== */
-.stats {
-    margin-top: 20px;
-    font-size: 13px;
-    opacity: 0.8;
-    display: flex;
-    justify-content: space-between;
 }
 
 /* ===== Empty State ===== */
 #emptyState {
-    margin-top: 20px;
     text-align: center;
-    opacity: 0.6;
+    opacity: 0.7;
+    margin-top: 20px;
     font-size: 14px;
+}
+
+/* ===== Stats ===== */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    font-size: 14px;
+    opacity: 0.8;
 }
