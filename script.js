@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 addBtn.addEventListener("click", addTask);
 
 function addTask() {
+    const taskInput = document.getElementById("taskInput");
     const taskText = taskInput.value.trim();
 
     if (taskText === "") {
@@ -41,18 +42,34 @@ function addTask() {
         return;
     }
 
-    const newTask = {
-        id: Date.now(),
-        text: taskText,
-        completed: false
-    };
+    const li = document.createElement("li");
 
-    tasks.push(newTask);
-    saveTasks();
-    renderTasks();
+    const span = document.createElement("span");
+    span.textContent = taskText;
+
+    span.addEventListener("click", function () {
+        span.classList.toggle("completed");
+    });
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "✖";
+
+    deleteBtn.addEventListener("click", function () {
+        li.remove();
+    });
+
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
+
+    document.getElementById("taskList").appendChild(li);
 
     taskInput.value = "";
 }
+
+
+// ===== Event Listener =====
+document.getElementById("addBtn").addEventListener("click", addTask);
+
 
 /* -------------------- RENDER TASKS -------------------- */
 
